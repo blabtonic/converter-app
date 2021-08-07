@@ -11,7 +11,9 @@ export default function App() {
     axios
       .get('/api/ticker/btc-usd')
       .then((response) => {
-        console.log(response);
+        console.log(response.data.ticker.price);
+        // this is the data I need
+        alert(response.data.ticker.price);
       })
       .catch((error) => {
         console.log(error);
@@ -24,7 +26,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>What is the price of Bitcoin?</Text>
       <StatusBar style="auto" />
     </View>
   );
