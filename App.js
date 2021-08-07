@@ -20,6 +20,7 @@ export default function App() {
   };
 
   const [selectedCrypto, setSelectedCrypto] = useState('btc');
+  const [selectedFiat, setSelectedFiat] = useState();
 
   return (
     <View style={styles.container}>
@@ -35,6 +36,20 @@ export default function App() {
         <Picker.Item label="SUSHI" value="sushi" />
         <Picker.Item label="CRV" value="crv" />
       </Picker>
+      <Picker
+        dropdownIconColor="#d70087"
+        selectedValue={selectedFiat}
+        onValueChange={(itemValue) => setSelectedFiat(itemValue)}
+        mode="dropdown"
+        style={{ height: 30, width: 120 }}
+      >
+        <Picker.Item label="USD" value="usd" />
+        <Picker.Item label="JPY" value="jpy" />
+        <Picker.Item label="CAD" value="cad" />
+        <Picker.Item label="EUR" value="EUR" />
+        <Picker.Item label="GBP" value="GBP" />
+      </Picker>
+
       <Text>What is the price of {selectedCrypto}</Text>
       <TouchableOpacity onPress={showData}>
         <LinearGradient
