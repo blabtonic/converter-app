@@ -30,10 +30,10 @@ export default function App() {
       <Text>What is the price of Bitcoin?</Text>
       <LinearGradient
         // Button Linear Gradient
-        colors={['#8E0E00', '#1F1C18']}
-        style={styles.button}
+        colors={['#43C6AC', '#191654']}
+        style={styles.buttonStyle}
       >
-        <Text style={styles.text}>Sign in with Facebook</Text>
+        <Text style={styles.buttonText}>Press Here</Text>
       </LinearGradient>
       <StatusBar style="auto" />
     </View>
@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonStyle: {
-    padding: 10,
+    padding: 24,
     alignItems: 'center',
-    borderRadius: 3,
+    borderRadius: 8,
   },
   buttonText: {
     backgroundColor: 'transparent',
-    fontSize: 11,
+    fontSize: 17,
     color: '#ffefd5',
   },
 });
