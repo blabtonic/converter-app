@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
+import LinearGradient from 'react-native-linear-gradient';
 
 axios.defaults.baseURL = 'https://api.cryptonator.com';
 export default function App() {
