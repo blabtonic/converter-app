@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import axios from 'axios';
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 axios.defaults.baseURL = 'https://api.cryptonator.com';
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
       .then((response) => {
         console.log(response.data.ticker.price);
         // this is the data I need
-        alert(response.data.ticker.price);
+        //alert(response.data.ticker.price);
       })
       .catch((error) => {
         console.log(error);
@@ -28,6 +28,13 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>What is the price of Bitcoin?</Text>
+      <LinearGradient
+        // Button Linear Gradient
+        colors={['#8E0E00', '#1F1C18']}
+        style={styles.button}
+      >
+        <Text style={styles.text}>Sign in with Facebook</Text>
+      </LinearGradient>
       <StatusBar style="auto" />
     </View>
   );
@@ -39,5 +46,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonStyle: {
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 3,
+  },
+  buttonText: {
+    backgroundColor: 'transparent',
+    fontSize: 11,
+    color: '#ffefd5',
   },
 });
