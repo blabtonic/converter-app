@@ -1,18 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import axios from 'axios';
 import { LinearGradient } from 'expo-linear-gradient';
 
 axios.defaults.baseURL = 'https://api.cryptonator.com';
 export default function App() {
-  // get data from API
+  // get data from API /* NOT NEEDED KEEPING FOR REFERENCE */
   const fetchData = () => {
     // make the the end uri variables
+    // let cryptoName = 'ren';
     axios
       .get('/api/ticker/btc-usd')
       .then((response) => {
-        console.log(response.data.ticker.price);
         // this is the data I need
         //alert(response.data.ticker.price);
       })
@@ -21,6 +21,19 @@ export default function App() {
       });
   };
 
+  // onPress function that shows the data when pressed
+  const showData = () => {
+    axios
+      .get('/api/ticker/btc-usd')
+      .then((response) => {
+        alert(`Currently $${response.data.ticker.price.substring(0, 8)} USD`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // acts as a componentWillMount
   useEffect(() => {
     fetchData();
   }, []);
@@ -28,13 +41,15 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>What is the price of Bitcoin?</Text>
-      <LinearGradient
-        // Button Linear Gradient
-        colors={['#43C6AC', '#191654']}
-        style={styles.buttonStyle}
-      >
-        <Text style={styles.buttonText}>Press Here</Text>
-      </LinearGradient>
+      <TouchableOpacity onPress={showData}>
+        <LinearGradient
+          // Button Linear Gradient
+          colors={['#43C6AC', '#191654']}
+          style={styles.buttonStyle}
+        >
+          <Text style={styles.buttonText}>Press Here</Text>
+        </LinearGradient>
+      </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
