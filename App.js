@@ -1,26 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import axios from 'axios';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Picker } from '@react-native-picker/picker';
 
 axios.defaults.baseURL = 'https://api.cryptonator.com';
 export default function App() {
-  // get data from API /* NOT NEEDED KEEPING FOR REFERENCE */
-  const fetchData = () => {
-    // make the the end uri variables
-    // let cryptoName = 'ren';
-    axios
-      .get('/api/ticker/btc-usd')
-      .then((response) => {
-        // this is the data I need
-        //alert(response.data.ticker.price);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   // onPress function that shows the data when pressed
   const showData = () => {
     axios
@@ -33,13 +19,20 @@ export default function App() {
       });
   };
 
-  // acts as a componentWillMount
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [selectedCrypto, setSelectedCrypto] = useState('btc');
 
   return (
     <View style={styles.container}>
+      <Picker
+        dropdownIconColor="#008787"
+        selectedValue={selectedCrypto}
+        onValueChange={(itemValue) => setSelectedCrypto(itemValue)}
+        mode="dropdown"
+        style={{ height: 30, width: 120 }}
+      >
+        <Picker.Item label="BTC" value="btc" />
+        <Picker.Item label="ETH" value="eth" />
+      </Picker>
       <Text>What is the price of Bitcoin?</Text>
       <TouchableOpacity onPress={showData}>
         <LinearGradient
