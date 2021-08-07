@@ -32,8 +32,10 @@ export default function App() {
       >
         <Picker.Item label="BTC" value="btc" />
         <Picker.Item label="ETH" value="eth" />
+        <Picker.Item label="SUSHI" value="sushi" />
+        <Picker.Item label="CRV" value="crv" />
       </Picker>
-      <Text>What is the price of Bitcoin?</Text>
+      <Text>What is the price of {selectedCrypto}</Text>
       <TouchableOpacity onPress={showData}>
         <LinearGradient
           // Button Linear Gradient
