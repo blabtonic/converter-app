@@ -7,20 +7,22 @@ import { Picker } from '@react-native-picker/picker';
 
 axios.defaults.baseURL = 'https://api.cryptonator.com';
 export default function App() {
+
+  const [selectedCrypto, setSelectedCrypto] = useState('btc');
+  const [selectedFiat, setSelectedFiat] = useState('usd');
+
   // onPress function that shows the data when pressed
   const showData = () => {
     axios
-      .get('/api/ticker/btc-usd')
+      .get(`/api/ticker/${selectedCrypto}-${selectedFiat}`)
       .then((response) => {
-        alert(`Currently $${response.data.ticker.price.substring(0, 8)} USD`);
+        console.log(response.data);
+        alert(`Currently ${response.data.ticker.price}`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  const [selectedCrypto, setSelectedCrypto] = useState('btc');
-  const [selectedFiat, setSelectedFiat] = useState();
 
   return (
     <View style={styles.container}>
@@ -35,6 +37,7 @@ export default function App() {
         <Picker.Item label="ETH" value="eth" />
         <Picker.Item label="SUSHI" value="sushi" />
         <Picker.Item label="CRV" value="crv" />
+        <Picker.Item label="ALGO" value="algo" />
       </Picker>
       <Picker
         dropdownIconColor="#d70087"
@@ -46,11 +49,11 @@ export default function App() {
         <Picker.Item label="USD" value="usd" />
         <Picker.Item label="JPY" value="jpy" />
         <Picker.Item label="CAD" value="cad" />
-        <Picker.Item label="EUR" value="EUR" />
-        <Picker.Item label="GBP" value="GBP" />
+        <Picker.Item label="EUR" value="eur" />
+        <Picker.Item label="GBP" value="gbp" />
       </Picker>
 
-      <Text>What is the price of {selectedCrypto}</Text>
+      <Text>What is the price of {selectedCrypto} to the price of {selectedFiat}</Text>
       <TouchableOpacity onPress={showData}>
         <LinearGradient
           // Button Linear Gradient
