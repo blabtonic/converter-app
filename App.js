@@ -25,6 +25,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Appbar style={styles.barStyle}>
+        <Appbar.Content title="Crypto Converter" />
+      </Appbar>
       <Picker
         dropdownIconColor="#008787"
         selectedValue={selectedCrypto}
@@ -85,5 +88,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     fontSize: 17,
     color: '#ffefd5',
+  },
+  barStyle: {
+    position: 'absolute',
+    backgroundColor: '#1E90FF',
+    left: 0,
+    right: 0,
+    top: 30,
   },
 });
