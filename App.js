@@ -16,7 +16,6 @@ export default function App() {
     axios
       .get(`/api/ticker/${selectedCrypto}-${selectedFiat}`)
       .then((response) => {
-        console.log(response.data);
         alert(`Currently ${response.data.ticker.price}`);
       })
       .catch((error) => {
