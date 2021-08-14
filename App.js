@@ -4,10 +4,10 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import axios from 'axios';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Picker } from '@react-native-picker/picker';
+import { Appbar } from 'react-native-paper';
 
 axios.defaults.baseURL = 'https://api.cryptonator.com';
 export default function App() {
-
   const [selectedCrypto, setSelectedCrypto] = useState('btc');
   const [selectedFiat, setSelectedFiat] = useState('usd');
 
@@ -52,7 +52,9 @@ export default function App() {
         <Picker.Item label="GBP" value="gbp" />
       </Picker>
 
-      <Text>What is the price of {selectedCrypto} to the price of {selectedFiat}</Text>
+      <Text>
+        What is the price of {selectedCrypto} to the price of {selectedFiat}
+      </Text>
       <TouchableOpacity onPress={showData}>
         <LinearGradient
           // Button Linear Gradient
