@@ -55,7 +55,7 @@ export default function App() {
         <Picker.Item label="GBP" value="gbp" />
       </Picker>
 
-      <Text>
+      <Text style={styles.text}>
         What is the price of {selectedCrypto} to the price of {selectedFiat}
       </Text>
       <TouchableOpacity onPress={showData}>
@@ -96,4 +96,8 @@ const styles = StyleSheet.create({
     right: 0,
     top: 30,
   },
+  text: {
+    fontSize: 26,
+    color: '#000'
+  }
 });
